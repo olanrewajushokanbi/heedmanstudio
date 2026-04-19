@@ -1,0 +1,52 @@
+﻿$(document).ready(function () {
+    $('#filter-toggle').click(function () {
+       
+            $('.filter-column').toggleClass('hide');
+/*            $('.grid-column').toggleClass('fullwidth');*/
+            $('.hide-filters').toggleClass('hide');
+            $('.show-filters').toggleClass('show');
+        
+    });
+    //Hide/Show Mobile Filters Column
+    $('#mobile-filter-toggle button').click(function () {
+        if ($(window).width() >= 991) {
+            $('.filter-column').toggleClass('hide');
+/*            $('.grid-column').toggleClass('fullwidth');*/
+            $('.hide-filters').toggleClass('hide');
+            $('.show-filters').toggleClass('show');
+        } else {
+            $('html').addClass('fixed');
+            $('.filter-column').show("slide", { direction: "right" }, 500).addClass('show');
+            $('.quick-filters').addClass('overflow');
+        }
+    });
+    $('#mobile-filter-toggle-anchored button').click(function () {
+        if ($(window).width() >= 991) {
+            $('.filter-column').toggleClass('hide');
+            /*            $('.grid-column').toggleClass('fullwidth');*/
+            $('.hide-filters').toggleClass('hide');
+            $('.show-filters').toggleClass('show');
+        } else {
+            $('html').addClass('fixed');
+            $('.filter-column').show("slide", { direction: "right" }, 500).addClass('show');
+            $('.quick-filters').addClass('overflow');
+        }
+    });
+
+    //Mobile Filter
+    $('.mobile-filters').click(function () {
+        $('html').removeClass('fixed');
+        $('.filter-column').hide("slide", { direction: "right" }, 500).removeClass('show');
+        $('.quick-filters').removeClass('overflow');
+    });
+
+    //Uncheck all Filters
+    function uncheckAll() {
+        document.querySelectorAll('input[type="checkbox"]')
+            .forEach(el => el.checked = false);
+    }
+    var myEle = document.getElementById("clear-filters");
+    if (myEle) {
+        document.querySelector('#clear-filters').addEventListener('click', uncheckAll)
+    }
+});

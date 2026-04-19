@@ -1,0 +1,87 @@
+﻿$(document).ready(function () {
+    $('#mobile-search-toggle').click(function (e) {
+        if ($('body').hasClass('search-modal-open')) {
+            $('body').removeClass('search-modal-open');
+            $('#mobile-search-toggle').trigger('focus');
+            $('#mobile-search-dropdown').hide();
+            $('body').addClass('closedsearch');
+            $('#search-close').hide();
+        } else {
+            $('.search-dropdown').removeClass('is-floating');
+            $('body').addClass('search-modal-open');
+            $('#mobile-search-dropdown').show().removeAttr('aria-hidden');
+            $('#search-close').focus();
+            $('body').removeClass('closedsearch');
+            $('.dropdown-toggle').attr('aria-expanded', 'false');
+            $('.header-searchbox').val("").removeAttr('value');
+            e.stopPropagation();
+        }
+    });
+
+    $(document).click(function (e) {
+        if (($('body').hasClass('search-modal-open')) && ($(window).width() <= 991)) {
+            //alert('click');
+            if ($(e.target).parents(".search-dropdown").length === 0) {
+                $('body').removeClass('search-modal-open');
+                $('#mobile-search-toggle').trigger('focus');
+                $('#mobile-search-dropdown').hide();
+                $('body').addClass('closedsearch');
+            }
+        }
+    });
+    $(document).keyup(function (e) {
+        if ((e.keyCode === 27) && ($(window).width() <= 991)) {
+            if ($('body').hasClass('search-modal-open')) {
+                $('body').removeClass('search-modal-open');
+                $('#mobile-search-toggle').trigger('focus');
+                $('#mobile-search-dropdown').hide();
+                $('body').addClass('closedsearch');
+                $('#mobile-search-close').hide();
+            }
+
+        }
+        if (e.keyCode === 40) {
+            var focused = $(':focus').attr('class');
+            console.log(focused);
+        }
+    });
+
+    $('#search-close').click(function () {
+        $('body').removeClass('search-modal-open');
+        $('#mobile-search-toggle').trigger('focus');
+        $('#mobile-search-dropdown').hide();
+        $('body').addClass('closedsearch');
+        $('#mobile-search-close').hide();
+        $('.header-searchbox').val("").removeAttr('value');
+        $('.search-dropdown').removeClass('is-floating');
+    });
+
+    $('#mobile-clear-search').click(function () {
+        $('#mobile-search-dropdown .header-searchbox').val("");
+    });
+});
+
+
+window.addEventListener('DOMContentLoaded', function (e) {
+    var container = document.getElementById('mobile-search-dropdown');
+    var input = document.querySelector('.header-searchbox.mobile-search');
+
+    // Make the label float when the field is focused
+    input.addEventListener('focus', function (e) {
+        container.classList.add('has-focus');
+        container.classList.add('is-floating');
+    });
+    if ($('.header-searchbox.mobile-search').val() != '') {
+        container.classList.add('is-floating');
+    }
+
+    // Move the label back on blur, but only if the field is empty
+    input.addEventListener('blur', function (e) {
+        container.classList.remove('has-focus');
+
+        if (e.target.value == '') {
+            container.classList.remove('is-floating');
+        }
+    });
+});
+

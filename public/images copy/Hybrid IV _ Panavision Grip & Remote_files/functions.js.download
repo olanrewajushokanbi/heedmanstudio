@@ -1,0 +1,416 @@
+﻿$(document).ready(function () {
+
+    var canonical = document.querySelector('link[rel="canonical"]');
+    if (canonical && document.querySelector('meta[property="og:url"]'))
+    {
+        document.querySelector('meta[property="og:url"]').setAttribute("content", canonical.getAttribute("href"));
+    }
+
+    new WOW().init();
+
+    /* NARROW SLIDER */
+    var $pagination = $('.narrow-slider-pagination');
+    var $slickNarrowSlider = $('.narrow-slider').not('.slick-initialized').not('.credit-slim');
+
+    $slickNarrowSlider.on('init reInit afterChange', function (event, slick, currentSlide, nextSlide) {
+        if (!slick.$dots) {
+            return;
+        }
+        var i = $('.narrow-slider-wrapper .slick-active button').text();
+        $pagination.text(i + ' of ' + (slick.$dots[0].children.length));
+    });
+
+    $slickNarrowSlider.slick({
+        infinite: false,
+        arrows: true,
+        prevArrow: $('.narrow-slider-button-prev'),
+        nextArrow: $('.narrow-slider-button-next'),
+        dots: true,
+        slidesToShow: 4,
+        slidesToScroll: 4,
+        variableWidth: true,
+        touchThreshold: 1000,
+        responsive: [
+            {
+                breakpoint: 1024,
+                settings: {
+                    slidesToShow: 3,
+                    slidesToScroll: 3
+                }
+            },
+            {
+                breakpoint: 768,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1
+                }
+            },
+        ]
+    });
+    /*Credit Slim Poster Slider */
+    $('.narrow-slider.credit-slim').slick({
+        infinite: true,
+        arrows: true,
+        prevArrow: $('.narrow-slider-button-prev'),
+        nextArrow: $('.narrow-slider-button-next'),
+        dots: true,
+        slidesToScroll: 1,
+        slidesToShow: 4,
+        variableWidth: true,
+        touchThreshold: 1000,
+        responsive: [
+            {
+                breakpoint: 1024,
+                settings: {
+                    slidesToShow: 3,
+                    slidesToScroll: 3
+                }
+            },
+            {
+                breakpoint: 768,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1
+                }
+            },
+            {
+                breakpoint: 767,
+                settings: {
+                    slidesToShow: 2,
+                    swipeToSlide: true,
+                    touchMove: true,
+                    touchThreshold: 1000
+
+                }
+            },
+        ]
+    });
+
+    /*Image and CTA Slider */
+    $('.image-cta-slider').slick({
+        infinite: true,
+        arrows: true,
+        prevArrow: $('.image-cta-slider-button-prev'),
+        nextArrow: $('.image-cta-slider-button-next'),
+        dots: false,
+        centerMode: true,
+        centerPadding: '60px',
+        slidesToShow: 1,
+        touchThreshold: 1000,
+        variableWidth: true,
+        responsive: [
+            {
+                breakpoint: 991,
+                settings: {
+                    arrows: false,
+                    centerMode: true,
+                    centerPadding: '40px',
+                    variableWidth: false,
+                    slidesToShow: 1
+                }
+            },
+            {
+                breakpoint: 768,
+                settings: {
+                    arrows: false,
+                    centerMode: true,
+                    variableWidth: false,
+                    centerPadding: '40px',
+                    slidesToShow: 1
+                }
+            },
+            {
+                breakpoint: 480,
+                settings: {
+                    arrows: false,
+                    centerMode: true,
+                    variableWidth: false,
+                    centerPadding: '40px',
+                    slidesToShow: 1
+                }
+            }
+        ]
+
+
+    });
+    /* Logo Slider */
+    $('.logo-slider').slick({
+        infinite: true,
+        arrows: true,
+        prevArrow: $('.logo-slider-button-prev'),
+        nextArrow: $('.logo-slider-button-next'),
+        dots: false,
+        slidesToShow: 5,
+        slidesToScroll: 1,
+        touchThreshold: 1000,
+        responsive: [
+            {
+                breakpoint: 1024,
+                settings: {
+                    slidesToShow: 3,
+                    slidesToScroll: 3,
+                }
+            },
+            {
+                breakpoint: 768,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 2,
+                    dots: true,
+                    arrows: false,
+                    prevArrow: "",
+                    nextArrow: "",
+                }
+            },
+            {
+                breakpoint: 480,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    dots: true,
+                    arrows: false
+                }
+            }
+
+        ]
+
+    });
+
+    //Single Testimonial Slide, no Image
+    $('.test-no-image').slick({
+        infinite: true,
+        arrows: true,
+        dots: true,
+        slidesToShow: 1,
+        touchThreshold: 1000,
+        slidesToScroll: 1
+    });
+    //Single Testimonial Slide, with Image
+    $('.test-with-image').slick({
+        infinite: true,
+        arrows: true,
+        dots: false,
+        touchThreshold: 1000,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        responsive: [
+
+            {
+                breakpoint: 768,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    dots: true,
+                    arrows: false,
+                    prevArrow: "",
+                    nextArrow: "",
+                }
+            },
+            {
+                breakpoint: 480,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    dots: true,
+                    arrows: false
+                }
+            }
+
+        ]
+    });
+    //Testimonial Slider, 2 testimonials showing
+    $('.test-dualslider-wrapper').slick({
+        infinite: true,
+        arrows: true,
+        dots: false,
+        slidesToShow: 2,
+        touchThreshold: 1000,
+        slidesToScroll: 1,
+        responsive: [
+            {
+                breakpoint: 991,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                }
+            },
+            {
+                breakpoint: 768,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    dots: true,
+                    arrows: false,
+                    prevArrow: "",
+                    nextArrow: "",
+                }
+            },
+            {
+                breakpoint: 480,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    dots: true,
+                    arrows: false
+                }
+            }
+
+        ]
+    });
+    //Artist Detail Slider
+    $('.artist-detail-slider-wrapper').slick({
+        infinite: true,
+        arrows: true,
+        dots: false,
+        touchThreshold: 1000,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        responsive: [
+
+            {
+                breakpoint: 991,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    dots: true,
+                    arrows: false
+                }
+            }
+
+        ]
+    });
+    $(document).on('click', '.nav-link', function (event) {
+        if ((window.location.href.indexOf("highlights") > -1) || (window.location.href.indexOf("/contact") > -1) || (window.location.href.indexOf("/artists") > -1) || (window.location.href.indexOf("/careers") > -1) || (window.location.href.indexOf("/global-directory") > -1)) {
+            document.cookie = "currentPage" + "=;expires=Thu, 01 Jan 1970 00:00:00 UTC; path=" + window.location.pathname;
+        }
+    });
+    //Accordion Content
+    var accordionButtons = $('.accordion-controls.single-open li button');
+
+    function accordionToggle() {
+        $('.accordion-controls button').on('click', function (e) {
+            $control = $(this);
+
+            accordionContent = $control.attr('aria-controls');
+            checkOthers($control[0]);
+
+            isAriaExp = $control.attr('aria-expanded');
+            newAriaExp = (isAriaExp == "false") ? "true" : "false";
+            $control.attr('aria-expanded', newAriaExp);
+            //var newHeight = $(accordionContent).height();
+            isAriaHid = $('#' + accordionContent).attr('aria-hidden');
+            if (isAriaHid == "true") {
+                $('#' + accordionContent).attr('aria-hidden', "false");
+                var newHeight = $(accordionContent).children('div').height();
+                $('#' + accordionContent).slideDown("fast", function () {
+                    $(this).addClass('open');
+
+                }).closest('.accordion-content').css("opacity", 0).animate({ opacity: 1 }, 200);
+            } else {
+                $('#' + accordionContent).attr('aria-hidden', "true");
+                $(this).parents('h3').siblings('.accordion-content').animate({ opacity: 0 }, 200);
+                $('#' + accordionContent).slideUp("fast", function () {
+
+                    $(this).removeClass('open');
+                });
+            }
+        });
+    };
+    function checkOthers(elem) {
+        for (var i = 0; i < accordionButtons.length; i++) {
+            if (accordionButtons[i] != elem) {
+                if (($(accordionButtons[i]).attr('aria-expanded')) == 'true') {
+                    $(accordionButtons[i]).attr('aria-expanded', 'false');
+                    content = $(accordionButtons[i]).attr('aria-controls');
+                    $('#' + content).attr('aria-hidden', 'true');
+                    $('#' + content).slideUp("fast", function () {
+                        $(this).removeClass('open');
+                    });
+                }
+            }
+        }
+    };
+    accordionToggle();
+
+    /*Form Validation Markup */
+    var general = $(".form-group").find("[required=required]");
+    if (general != null) {
+        $(general).prev().append("<span style='color:#E00026'> *</span>");
+        $(general).addClass("required");
+    }
+    var dropdown = $(".select-form-group").find("[required=required]");
+    if (dropdown != null) {
+        $(dropdown).parent().prev().append("<span style='color:#E00026'> *</span>");
+        $(dropdown).addClass("required");
+    }
+
+    var multiple = $(".radio-label").find("[required=required]").parents('.form-group');
+    if (multiple != null) {
+        $(multiple).find('legend').append("<span style='color:#E00026'> *</span>");
+    }
+
+    var files = $(".sf-FileField[data-sf-config*=true]");
+    if (files != null) {
+
+        $(files).each(function (index) {
+            var firstChild = $(files[index]).children()[0];
+            $(firstChild).after("<span style='font-weight:bold; color:red'> *</span>");
+        });
+
+    }
+    var choices = $(".form-group").find('[data-sf-role=required-validator][value=True]').parent();
+    if (choices != null) {
+
+        $(choices).find('legend').append("<span style='color:#E00026'> *</span>");
+    }
+
+    $('button[type = "submit"]').each(function () {
+        $(this).click(function () {
+            var form = $(this).closest('form')[0];
+            if (form.checkValidity() == false) {
+                $(form).find('.form-control.required').css("border", "1px solid red");
+                $(form).find('.form-control.required').first().focus();
+            }
+
+        });
+    });
+
+    //Toggle Metric v Imperial
+    if ($('input.measurement-toggle').is(':checked')) {
+        $('.metric').hide();
+        $('.imperial').show();
+    } else {
+        $('.metric').show();
+        $('.imperial').hide();
+    }
+
+    $("input.measurement-toggle").change(function () {
+        if (this.checked) {
+            $('.metric').hide();
+            $('.imperial').show();
+        } else {
+            $('.metric').show();
+            $('.imperial').hide();
+        }
+    });
+    if (document.querySelector(".artist-detail")) {
+        var itemsToShow = 12;
+        var totalItems = $('.all-credit-item').length;
+        $('.all-credit-item').hide().slice(0, itemsToShow).show();
+        if (totalItems <= itemsToShow) {
+            $('.load-more-btn').hide();
+        }
+        $('.load-more-btn').click(function (e) {
+            e.preventDefault();
+            var currentlyVisible = $('.all-credit-item:visible').length;
+            $('.all-credit-item:hidden').slice(0, itemsToShow).fadeIn();
+
+            if (currentlyVisible + itemsToShow >= totalItems) {
+                $(this).fadeOut();
+            }
+        });
+    }
+});
+
+
+

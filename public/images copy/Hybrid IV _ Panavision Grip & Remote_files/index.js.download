@@ -1,0 +1,98 @@
+﻿$(document).ready(function () {
+    let searchTextboxId = $('input[data-sf-role="searchTextBoxId"]').val();
+    let $container = $('.search-dropdown');
+    let $input = $('.header-searchbox');
+
+    if ($input.val() != '') {
+        $container.addClass('is-floating');
+    }
+
+    $input.on({
+        "focus": function (e) {
+            $container.addClass('has-focus');
+            $container.addClass('is-floating');
+        },
+        "blur": function (e) {
+            $container.removeClass('has-focus');
+
+            if (e.target.value == '') {
+                $container.removeClass('is-floating');
+            }
+        }
+    });
+
+    $('#search-toggle').click(function (e) {
+        let $body = $('body');
+        if ($body.hasClass('search-modal-open'))
+        {
+            $body.removeClass('search-modal-open');
+            $body.addClass('closedsearch');
+
+            $('#search-toggle').trigger('focus');
+            $('#search-dropdown').hide();
+            $('#search-close').hide();
+        } else {
+            $body.removeClass('closedsearch');
+            $body.addClass('search-modal-open');
+
+            $('.dropdown-toggle').attr('aria-expanded', 'false');
+            $('.header-searchbox').val("").removeAttr('value');
+            $('.search-dropdown').removeClass('is-floating');
+            $('#search-dropdown').removeAttr('aria-hidden').show();
+            $(searchTextboxId).focus();
+            
+            e.stopPropagation();
+        }
+
+    });
+
+    $('#search-close').click(function () {
+        let $body = $('body');
+        $body.removeClass('search-modal-open');
+        $body.addClass('closedsearch');
+
+        $('#search-toggle').trigger('focus');
+        $('#search-dropdown').hide();
+        $('#search-close').hide();
+        $('.search-dropdown').removeClass('is-floating');
+        $('.header-searchbox').val("").removeAttr('value');
+    });
+
+    $('#clear-search').click(function () {
+        $('.header-searchbox').val("");
+    });
+});
+
+if ($(window).width() >= 992) {
+    $(document).click(function (e) {
+        let $body = $('body');
+        if ($body.hasClass('search-modal-open')) {
+            //alert('click');
+            if ($(e.target).parents(".search-dropdown").length === 0) {
+                $body.removeClass('search-modal-open');
+                $body.addClass('closedsearch');
+
+                $('#search-toggle').trigger('focus');
+                $('#search-dropdown').hide();
+            }
+        }
+    });
+    $(document).keyup(function (e) {
+        if (e.keyCode === 27) {
+            let $body = $('body');
+            if ($body.hasClass('search-modal-open')) {
+                $body.removeClass('search-modal-open');
+                $body.addClass('closedsearch');
+
+                $('#search-toggle').trigger('focus');
+                $('#search-dropdown').hide();
+                $('#search-close').hide();
+            }
+
+        }
+        if (e.keyCode === 40) {
+            var focused = $(':focus').attr('class');
+            console.log(focused);
+        }
+    });
+}

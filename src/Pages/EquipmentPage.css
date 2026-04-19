@@ -1,0 +1,270 @@
+.hero2 {
+  height: 80vh;
+  background-image: url("images/grok_1770129493264.jpg");
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.overlay2 {
+  width: 100%;
+  height: 100%;
+  background: rgba(75, 73, 73, 0.4);
+  display: flex;
+  justify-content: center;
+  padding-top: 150px;
+  text-align: center;
+  pointer-events: none;
+}
+
+.hero-text-heading2 {
+  color: white;
+
+  font-weight: 700;
+  font-size: 60px;
+  letter-spacing: 2px;
+  margin-bottom: 40px;
+}
+
+.hero-text2 {
+  margin-top: 30px;
+}
+
+.hero-text-sub {
+  color: rgb(233, 157, 17);
+  font-weight: 700;
+  font-size: 40px;
+}
+
+.hero-text-details {
+  color: white;
+  font-size: 25px;
+  letter-spacing: 1px;
+  margin-top: 30px;
+}
+
+.equipment {
+  padding: 40px 40px;
+}
+
+.equipment-div {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+}
+
+.equipment-image {
+  width: 100%;
+  border-radius: 10px;
+  filter: brightness(70%);
+  object-fit: cover;
+  flex: 1;
+}
+
+.equipment-group {
+  background-color: #1a1a1a;
+  border-radius: 10px;
+  overflow: hidden;
+  width: 100%;
+  text-align: center;
+  transition: transform 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.equipment-group:hover {
+  transform: translateY(-6px);
+}
+
+.image-container {
+}
+.equipment-name {
+  color: white;
+  text-align: center;
+}
+
+.nav-sub {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+  align-items: center;
+  margin-right: 20px;
+}
+
+.nav-link {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 20px;
+  font-family: sans-serif;
+}
+
+.nav-link.active {
+  color: rgb(255, 153, 0);
+}
+
+.nav-link:hover {
+  color: #d4af37;
+}
+
+.new-logo {
+  width: 200px;
+}
+
+.main-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  height: 146px;
+  width: 100%;
+}
+
+.contact-btn {
+  background: rgb(255, 153, 0);
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: white;
+  font-weight: 600;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.fa-envelope,
+.fa-phone,
+.fa-house {
+  color: rgb(255, 136, 0);
+}
+
+.contact-dropdown {
+  position: absolute;
+  top: 60px;
+  right: 0;
+  background: #111;
+  padding: 10px;
+  border-radius: 8px;
+  min-width: 260px;
+  display: flex;
+  flex-direction: column;
+
+  gap: 20px;
+
+  opacity: 0;
+  transform: translateY(-10px);
+  pointer-events: none;
+  transition: all 0.6s ease;
+}
+
+.contact-items:hover .contact-dropdown {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.contact-item {
+  position: relative;
+}
+
+.address-link {
+  color: white;
+  text-decoration: none;
+  padding-left: 10px;
+}
+
+.equipment-tab-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  border-bottom: 2px solid gray;
+  padding-bottom: 10px;
+  flex-shrink: 0;
+  max-width: 800px;
+  margin: 0 auto;
+  margin-bottom: 25px;
+}
+
+.equipment-tab {
+  display: flex;
+  justify-content: center;
+  grid-area: 40px;
+  flex-wrap: wrap;
+}
+
+.tab {
+  background: none;
+  border: none;
+  color: #aaa;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  padding-bottom: 6px;
+  position: relative;
+}
+
+.tab.active {
+  color: #db5d1d;
+}
+
+@media (max-width: 500px) {
+  div.hero-text-heading2 {
+    font-size: 40px;
+    margin-bottom: 20px;
+  }
+
+  div.hero-text-sub {
+    font-size: 30px;
+  }
+
+  div.hero-text-details {
+    font-size: 20px;
+  }
+
+  div.equipment-div {
+    grid-template-columns: 1fr;
+  }
+  div.equipment-tab-wrapper {
+    display: none;
+  }
+
+  div.equipment-select {
+    display: block;
+  }
+
+  div.equipment-select select {
+    width: 100%;
+    padding: 12px 14px;
+    font-size: 20px;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 6px;
+    outline: none;
+    margin-bottom: 20px;
+  }
+}
+
+@media (min-width: 501px) and (max-width: 700px) {
+  div.hero-text-heading2 {
+    font-size: 50px;
+    margin-bottom: 20px;
+  }
+
+  div.hero-text-sub {
+    font-size: 30px;
+  }
+
+  div.hero-text-details {
+    font-size: 20px;
+  }
+
+  div.equipment-div {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.equipment-select {
+  display: none;
+}
