@@ -5,7 +5,7 @@ body {
 }
 
 body {
-  background-image: url("images/background4.jpg");
+  background-image: url("/images/background4.jpg");
   background-size: cover;
   background-position: center;
 }
