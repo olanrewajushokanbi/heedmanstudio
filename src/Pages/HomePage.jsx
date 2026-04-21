@@ -56,9 +56,9 @@ export function HomePage() {
           <div className="logo-menu">
             <ChevronDown size={45} color="white" className="sidebar" />
             <nav className="logo-nav">
-              <a href="/">Home</a>
-              <a href="/EquipmentPage">Equipment</a>
-              <a href="/PreviousProjectPage">Previous Project</a>
+              <Link to="/">Home</Link>
+              <Link to="/EquipmentPage">Equipment</Link>
+              <Link to="/PreviousProjectPage">Previous Project</Link>
             </nav>
           </div>
         </nav>
