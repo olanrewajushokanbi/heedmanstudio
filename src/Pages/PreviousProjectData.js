@@ -1,7 +1,7 @@
 export const PreviousProjects = [
   {
-    image: "images/sugar-rush.jpg",
-    name: "Sugar Rush",
+    image: "images/lady.jpg",
+    name: "Lady",
   },
 
   {
